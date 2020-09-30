@@ -61,3 +61,4 @@ If you need more advanced configuration, you can edit config files (eg. cassandr
 docker-compose restart
 ```
 
+A good example can be found in this [blog post](https://digitalis.io/blog/containerized-cassandra-cluster-for-local-testing/)
