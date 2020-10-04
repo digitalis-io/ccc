@@ -6,6 +6,7 @@ services:
     image: cassandra:3.11.8   # better to use a specific version, if you want to control upgrades 
     container_name: cass1
     hostname: cass1
+    mem_limit: 2g  # It's not strictly required, but it's better to have some memory limit
     healthcheck:
         test: ["CMD", "cqlsh", "-e", "describe keyspaces" ]
         interval: 5s
@@ -30,6 +31,7 @@ services:
     image: cassandra:3.11.8
     container_name: cass2
     hostname: cass2
+    mem_limit: 2g
     healthcheck:
         test: ["CMD", "cqlsh", "-e", "describe keyspaces" ]
         interval: 5s
@@ -51,6 +53,7 @@ services:
     image: cassandra:3.11.8
     container_name: cass3
     hostname: cass3
+    mem_limit: 2g
     healthcheck:
         test: ["CMD", "cqlsh", "-e", "describe keyspaces" ]
         interval: 5s
