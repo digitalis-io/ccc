@@ -1,4 +1,4 @@
-version: '3'
+version: '2.4'
 
 networks:
   cassandra:
@@ -8,6 +8,11 @@ services:
     image: cassandra:3.11.8
     container_name: cass1
     hostname: cass1
+    healthcheck:
+        test: ["CMD", "cqlsh", "-e", "describe keyspaces" ]
+        interval: 5s
+        timeout: 5s
+        retries: 60
     networks:
       - cassandra
     ports:
@@ -27,6 +32,11 @@ services:
     image: cassandra:3.11.8
     container_name: cass2
     hostname: cass2
+    healthcheck:
+        test: ["CMD", "cqlsh", "-e", "describe keyspaces" ]
+        interval: 5s
+        timeout: 5s
+        retries: 60
     networks:
       - cassandra
     ports:
@@ -36,12 +46,18 @@ services:
       - ./etc/cass2:/etc/cassandra    # Use your own config files for full control
     environment: *environment    # point to "environment" to use the same environment variables as cass1
     depends_on:
-      - cass1    # start cass2 only after cass1 is up
+      cass1:    # start cass2 only after cass1 is healthy
+        condition: service_healthy
 
   cass3:
     image: cassandra:3.11.8
     container_name: cass3
     hostname: cass3
+    healthcheck:
+        test: ["CMD", "cqlsh", "-e", "describe keyspaces" ]
+        interval: 5s
+        timeout: 5s
+        retries: 60
     networks:
       - cassandra
     ports:
@@ -51,4 +67,6 @@ services:
       - ./etc/cass3:/etc/cassandra    # Use your own config files for full control
     environment: *environment    # point to "environment" to use the same environment variables as cass1
     depends_on:
-      - cass2    # start cass3 only after cass2
+      cass2:    # start cass3 only after cass1 is healthy
+        condition: service_healthy
+
