@@ -1,7 +1,7 @@
 # CCC (Containerized Cassandra Cluster)
-Clean and simple containerized Cassandra cluster for local testing. A modern alternative to [ccm](https://github.com/digitalis-io/dcc).
+Clean and simple containerized Apache Cassandra cluster for local testing. A modern alternative to [ccm](https://github.com/digitalis-io/dcc).
 
-This approach is based on [official docker image](https://hub.docker.com/_/cassandra/), but still lets you control all the config files without a need to build a custom image. Which is described in more details in this [blog post](https://digitalis.io/blog/containerized-cassandra-cluster-for-local-testing/)
+This approach is based on [official image](https://hub.docker.com/_/cassandra/) (maintained by [Docker Hub](https://docs.docker.com/docker-hub/official_images/) ), but still lets you control all the config files without a need to build a custom image. Which is described in more details in this [blog post](https://digitalis.io/blog/containerized-cassandra-cluster-for-local-testing/)
 
 ## Quick start
 ```
