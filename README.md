@@ -8,6 +8,11 @@ This approach is based on [official image](https://hub.docker.com/_/cassandra/) 
 ./setup-config.sh
 docker-compose up -d
 
+# WARNING:
+# ./setup-config.sh doesn't work on MacOS atm, because Mac version of docker command line doesn't allow passing variables
+# in order to fix it, replace all instances of ${CASSANDRA_VERSION} in the script with an explicit version number
+# works fine on Linux
+
 # Check the cluster status
 docker exec cass1  nodetool status
 ```
