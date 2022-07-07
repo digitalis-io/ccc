@@ -3,7 +3,7 @@ networks:
   cassandra:  # docker network where all cassandra nodes will be put in
 services:
   cass1:
-    image: cassandra:3.11.8   # better to use a specific version, if you want to control upgrades 
+    image: cassandra:3.11.13   # better to use a specific version, if you want to control upgrades 
     container_name: cass1
     hostname: cass1
     mem_limit: 2g  # It's not strictly required, but it's better to have some memory limit
@@ -28,7 +28,7 @@ services:
         CASSANDRA_NUM_TOKENS: 128
 
   cass2:
-    image: cassandra:3.11.8
+    image: cassandra:3.11.13
     container_name: cass2
     hostname: cass2
     mem_limit: 2g
@@ -50,7 +50,7 @@ services:
         condition: service_healthy
 
   cass3:
-    image: cassandra:3.11.8
+    image: cassandra:3.11.13
     container_name: cass3
     hostname: cass3
     mem_limit: 2g
